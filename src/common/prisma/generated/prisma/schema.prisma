@@ -1,0 +1,80 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/common/prisma/generated/prisma"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Users {
+  id         Int          @id @default(autoincrement())
+  email      String       @unique(map: "email") @db.VarChar(255)
+  fullName   String?      @db.VarChar(255)
+  avatar     String?      @db.VarChar(255)
+  password   String?      @db.VarChar(255)
+  age        Int?
+  facebookId String?      @unique(map: "facebookId") @db.VarChar(255)
+  googleId   String?      @unique(map: "googleId") @db.VarChar(255)
+  roleId     Int          @default(2)
+  deletedBy  Int          @default(0)
+  isDeleted  Boolean      @default(false)
+  deletedAt  DateTime?    @db.Timestamp(0)
+  createdAt  DateTime     @default(now()) @db.Timestamp(0)
+  updatedAt  DateTime     @default(now()) @db.Timestamp(0)
+  Comments   Comments[]
+  Images     Images[]
+  ImagesSave ImagesSave[]
+}
+
+model Images {
+  id         Int          @id @default(autoincrement())
+  name       String?      @db.VarChar(255)
+  url        String?      @db.VarChar(255)
+  desc       String?      @db.VarChar(255)
+  userId     Int
+  deletedBy  Int          @default(0)
+  isDeleted  Boolean      @default(false)
+  deletedAt  DateTime?    @db.Timestamp(0)
+  createdAt  DateTime     @default(now()) @db.Timestamp(0)
+  updatedAt  DateTime     @default(now()) @db.Timestamp(0)
+  Comments   Comments[]
+  Users      Users        @relation(fields: [userId], references: [id], onDelete: Cascade, map: "fk_images_user")
+  ImagesSave ImagesSave[]
+
+  @@index([userId], map: "fk_images_user")
+}
+
+model Comments {
+  id        Int       @id @default(autoincrement())
+  content   String?   @db.VarChar(255)
+  userId    Int
+  imageId   Int
+  deletedBy Int       @default(0)
+  isDeleted Boolean   @default(false)
+  deletedAt DateTime? @db.Timestamp(0)
+  createdAt DateTime  @default(now()) @db.Timestamp(0)
+  updatedAt DateTime  @default(now()) @db.Timestamp(0)
+  Images    Images    @relation(fields: [imageId], references: [id], onDelete: Cascade, map: "fk_comments_image")
+  Users     Users     @relation(fields: [userId], references: [id], onDelete: Cascade, map: "fk_comments_user")
+
+  @@index([imageId], map: "fk_comments_image")
+  @@index([userId], map: "fk_comments_user")
+}
+
+model ImagesSave {
+  id        Int       @id @default(autoincrement())
+  userId    Int
+  imageId   Int
+  deletedBy Int       @default(0)
+  isDeleted Boolean   @default(false)
+  deletedAt DateTime? @db.Timestamp(0)
+  createdAt DateTime  @default(now()) @db.Timestamp(0)
+  updatedAt DateTime  @default(now()) @db.Timestamp(0)
+  Images    Images    @relation(fields: [imageId], references: [id], onDelete: Cascade, map: "fk_image_save_image")
+  Users     Users     @relation(fields: [userId], references: [id], onDelete: Cascade, map: "fk_image_save_user")
+
+  @@index([imageId], map: "fk_image_save_image")
+  @@index([userId], map: "fk_image_save_user")
+}
