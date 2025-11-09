@@ -8,8 +8,8 @@ export const commentsController = {
     res.status(response.statusCode).json(response);
   },
 
-  findCommentWithIdImage: async function (req, res, next) {
-    const result = await commentsService.findCommentWithIdImage(req);
+  findCommentByImageId: async function (req, res, next) {
+    const result = await commentsService.findCommentByImageId(req);
     const response = responseSuccess(
       result,
       `findCommentWithIdImage commentss successfully`

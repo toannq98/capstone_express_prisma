@@ -110,7 +110,7 @@
 							"raw": "{\r\n    \"email\": \"demo@demo.com\",\r\n    \"password\": \"123456\"\r\n}"
 						},
 						"url": {
-							"raw": "{{api-url}}/api/images?filters={\"name\":\"es\"}&page=1&pageSize=20",
+							"raw": "{{api-url}}/api/images?filters={\"name\":\"Forest\"}&page=1&pageSize=20",
 							"host": [
 								"{{api-url}}"
 							],
@@ -121,7 +121,7 @@
 							"query": [
 								{
 									"key": "filters",
-									"value": "{\"name\":\"es\"}"
+									"value": "{\"name\":\"Forest\"}"
 								},
 								{
 									"key": "page",
@@ -370,7 +370,7 @@
 			"name": "comments",
 			"item": [
 				{
-					"name": "findCommentWithIdImage",
+					"name": "findCommentByImageId",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -392,14 +392,13 @@
 							"raw": "{\r\n    \"email\": \"demo@demo.com\",\r\n    \"password\": \"123456\"\r\n}"
 						},
 						"url": {
-							"raw": "{{api-url}}/api/comments/6?page=1&pageSize=10&filters={\"imageId\": 6}",
+							"raw": "{{api-url}}/api/comments?page=1&pageSize=10&filters={\"imageId\": 6}",
 							"host": [
 								"{{api-url}}"
 							],
 							"path": [
 								"api",
-								"comments",
-								"6"
+								"comments"
 							],
 							"query": [
 								{

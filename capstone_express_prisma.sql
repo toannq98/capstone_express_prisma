@@ -23,7 +23,7 @@ CREATE TABLE `Comments` (
   KEY `fk_comments_image` (`imageId`),
   CONSTRAINT `fk_comments_image` FOREIGN KEY (`imageId`) REFERENCES `Images` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_comments_user` FOREIGN KEY (`userId`) REFERENCES `Users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 DROP TABLE IF EXISTS `Images`;
 CREATE TABLE `Images` (
@@ -40,7 +40,7 @@ CREATE TABLE `Images` (
   PRIMARY KEY (`id`),
   KEY `fk_images_user` (`userId`),
   CONSTRAINT `fk_images_user` FOREIGN KEY (`userId`) REFERENCES `Users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 DROP TABLE IF EXISTS `ImagesSave`;
 CREATE TABLE `ImagesSave` (
@@ -57,7 +57,7 @@ CREATE TABLE `ImagesSave` (
   KEY `fk_image_save_image` (`imageId`),
   CONSTRAINT `fk_image_save_image` FOREIGN KEY (`imageId`) REFERENCES `Images` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_image_save_user` FOREIGN KEY (`userId`) REFERENCES `Users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 DROP TABLE IF EXISTS `Users`;
 CREATE TABLE `Users` (
@@ -79,7 +79,7 @@ CREATE TABLE `Users` (
   UNIQUE KEY `email` (`email`),
   UNIQUE KEY `facebookId` (`facebookId`),
   UNIQUE KEY `googleId` (`googleId`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 INSERT INTO `Comments` (`id`, `content`, `userId`, `imageId`, `deletedBy`, `isDeleted`, `deletedAt`, `createdAt`, `updatedAt`) VALUES
 (24, 'Ảnh này đẹp thật đó!', 1, 6, 0, 0, NULL, '2025-11-03 21:27:56', '2025-11-03 21:27:56'),
@@ -88,8 +88,7 @@ INSERT INTO `Comments` (`id`, `content`, `userId`, `imageId`, `deletedBy`, `isDe
 (27, 'Ảnh hơi mờ nhưng vẫn đẹp ^^', 1, 6, 0, 0, NULL, '2025-11-03 21:27:56', '2025-11-03 21:27:56'),
 (28, 'Rất thích phong cách chụp này', 1, 6, 0, 0, NULL, '2025-11-03 21:27:56', '2025-11-03 21:27:56'),
 (29, 'Màu ảnh chỉnh hơi cháy, góp ý nhẹ thôi nha 😄', 1, 6, 0, 0, NULL, '2025-11-03 21:27:56', '2025-11-03 21:27:56'),
-(31, 'Ảnh đẹp quá, hẹ hẹ', 1, 6, 0, 0, NULL, '2025-11-09 21:00:36', '2025-11-09 21:00:36'),
-(32, 'Ảnh đẹp quá, hẹ hẹ ádasd', 1, 6, 0, 0, NULL, '2025-11-09 21:00:57', '2025-11-09 21:00:57');
+(31, 'Ảnh đẹp quá, hẹ hẹ', 1, 6, 0, 0, NULL, '2025-11-09 21:00:36', '2025-11-09 21:00:36');
 INSERT INTO `Images` (`id`, `name`, `url`, `desc`, `userId`, `deletedBy`, `isDeleted`, `deletedAt`, `createdAt`, `updatedAt`) VALUES
 (6, 'Sunset Beach', 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e', 'Hoàng hôn trên bãi biển tuyệt đẹp', 1, 0, 0, NULL, '2025-11-03 20:31:28', '2025-11-03 20:31:28'),
 (7, 'Mountain View', 'https://images.unsplash.com/photo-1501785888041-af3ef285b470', 'Khung cảnh núi non hùng vĩ', 1, 1, 1, '2025-11-09 21:02:35', '2025-11-03 20:31:28', '2025-11-09 21:02:35'),
@@ -107,22 +106,14 @@ INSERT INTO `Images` (`id`, `name`, `url`, `desc`, `userId`, `deletedBy`, `isDel
 (19, NULL, 'osh5qol4wc9ncfprj1wo', NULL, 1, 0, 0, NULL, '2025-11-09 19:11:31', '2025-11-09 19:11:31'),
 (20, NULL, 'demo/ilty8adnuix3glzcpdwe', NULL, 1, 0, 0, NULL, '2025-11-09 19:16:20', '2025-11-09 19:16:20'),
 (21, NULL, 'demo/otmwdzt0ombrbf4vgozo', NULL, 1, 0, 0, NULL, '2025-11-09 19:24:59', '2025-11-09 19:24:59'),
-(22, 'name demo', 'demo/umjmfqntpegligvxiga2', 'desc demo', 1, 0, 0, NULL, '2025-11-09 19:27:08', '2025-11-09 19:27:08'),
-(23, 'name demo', 'demo/u9x2ewu7qbecgwmrtkct', 'desc demo', 1, 0, 0, NULL, '2025-11-09 21:08:38', '2025-11-09 21:08:38'),
-(24, 'name demo', 'demo/nu2uixtjzq4rlurt2lym', 'desc demo', 1, 0, 0, NULL, '2025-11-09 21:09:20', '2025-11-09 21:09:20');
+(26, 'name demo', 'demo/a3lcqk3bejzexq0t87ox', 'desc demo', 1, 0, 0, NULL, '2025-11-09 21:52:31', '2025-11-09 21:52:31'),
+(27, 'name demo 2', 'demo/oaqknk0uctcwzucadaij', 'desc demo 2', 1, 0, 0, NULL, '2025-11-09 21:53:05', '2025-11-09 21:53:05');
 INSERT INTO `ImagesSave` (`id`, `userId`, `imageId`, `deletedBy`, `isDeleted`, `deletedAt`, `createdAt`, `updatedAt`) VALUES
-(6, 1, 6, 0, 1, '2025-11-03 22:27:53', '2025-11-03 22:26:48', '2025-11-03 22:27:52'),
-(7, 1, 6, 0, 1, '2025-11-03 22:27:57', '2025-11-03 22:27:56', '2025-11-03 22:27:57'),
-(8, 1, 6, 0, 1, '2025-11-03 22:28:16', '2025-11-03 22:28:08', '2025-11-03 22:28:15'),
-(9, 1, 6, 0, 1, '2025-11-03 22:28:31', '2025-11-03 22:28:25', '2025-11-03 22:28:30'),
-(10, 1, 6, 0, 1, '2025-11-03 22:30:37', '2025-11-03 22:30:36', '2025-11-03 22:30:36'),
-(11, 1, 6, 0, 1, '2025-11-09 20:57:06', '2025-11-03 22:30:44', '2025-11-09 20:57:05'),
-(12, 1, 7, 0, 0, NULL, '2025-11-04 00:14:03', '2025-11-04 00:14:03'),
-(13, 1, 6, 0, 1, '2025-11-09 20:58:19', '2025-11-09 20:57:44', '2025-11-09 20:58:18'),
-(14, 1, 6, 0, 0, NULL, '2025-11-09 20:58:53', '2025-11-09 20:58:53');
+(15, 1, 6, 0, 1, '2025-11-09 21:47:19', '2025-11-09 21:46:45', '2025-11-09 21:47:19'),
+(16, 1, 7, 0, 0, NULL, '2025-11-09 21:46:53', '2025-11-09 21:46:53');
 INSERT INTO `Users` (`id`, `email`, `fullName`, `avatar`, `password`, `age`, `facebookId`, `googleId`, `roleId`, `deletedBy`, `isDeleted`, `deletedAt`, `createdAt`, `updatedAt`) VALUES
-(1, 'demo@demo.com', 'Nguyễn Văn L', 'demo/jbdbs8e93vb0bvfhchcd', '$2b$10$.bnDt/S7zwINNUC3cf5.Zux8r/miE.ztpLy6agCM7wMhAlRww5XJy', 90, NULL, NULL, 2, 0, 0, NULL, '2025-11-03 20:07:53', '2025-11-09 21:11:14'),
-(7, 'demo2@demo.com', 'Nguyễn Văn B', NULL, '$2b$10$ABnRIAxHmntkICa/4vx22ec1V/FCOu7sGCwO0T3oZY4/B7.xS11I6', 19, NULL, NULL, 2, 0, 0, NULL, '2025-11-09 20:53:59', '2025-11-09 20:53:59');
+(1, 'demo@demo.com', 'Nguyễn Văn H', 'demo/dn0uxjcldsoeaz9xluqr', '$2b$10$.bnDt/S7zwINNUC3cf5.Zux8r/miE.ztpLy6agCM7wMhAlRww5XJy', 91, NULL, NULL, 2, 0, 0, NULL, '2025-11-03 20:07:53', '2025-11-09 21:54:14'),
+(8, 'demo2@demo.com', 'Nguyễn Văn B', NULL, '$2b$10$ga5iBs83.O0NDXCdfTYDn.F0bIZRIO2EuvroMDmksM0tvMbE/qTxC', 19, NULL, NULL, 2, 0, 0, NULL, '2025-11-09 21:44:16', '2025-11-09 21:44:16');
 
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;

@@ -6,10 +6,6 @@ const commentsRouter = express.Router();
 
 // Tạo route CRUD
 commentsRouter.post("/", protect, commentsController.create);
-commentsRouter.get(
-  "/:imageId",
-  protect,
-  commentsController.findCommentWithIdImage
-);
+commentsRouter.get("/", protect, commentsController.findCommentByImageId);
 
 export default commentsRouter;

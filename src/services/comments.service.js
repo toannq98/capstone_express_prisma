@@ -19,7 +19,7 @@ export const commentsService = {
     return comment;
   },
 
-  findCommentWithIdImage: async (req) => {
+  findCommentByImageId: async (req) => {
     const { page, pageSize, filters, index } = buildQuery(req.query);
 
     const imagesPromise = prisma.comments.findMany({
