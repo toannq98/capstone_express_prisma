@@ -28,7 +28,7 @@ export const commentsService = {
       take: pageSize,
     });
 
-    const totalItemPromise = prisma.comments.count();
+    const totalItemPromise = prisma.comments.count({ where: filters });
 
     const [images, totalItem] = await Promise.all([
       imagesPromise,

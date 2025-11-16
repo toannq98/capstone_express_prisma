@@ -14,7 +14,7 @@ export const imagesService = {
       take: pageSize,
     });
 
-    const totalItemPromise = prisma.images.count();
+    const totalItemPromise = prisma.images.count({ where: filters });
 
     const [images, totalItem] = await Promise.all([
       imagesPromise,
